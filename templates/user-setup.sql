@@ -1,0 +1,4 @@
+GRANT ALL PRIVILEGES ON * . * TO 'root'@'localhost';
+FLUSH PRIVILEGES;
+CREATE DATABASE hackberry;
+
