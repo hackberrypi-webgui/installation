@@ -43,9 +43,8 @@ rm /var/www/html/index.php
 mkdir $PWD/tmp; cd $PWD/tmp; git clone https://github.com/hackberrypi-webgui/public.git; cd public;
 cp * /var/www/html/ -R; cp .git /var/www/html/; mkdir /var/www/html/log; mkdir /var/www/html/temp; chmod 777 /var/www/html/log /var/www/html/temp -R
 cd $PWD/tmp
-rm public -R
+sudo rm public -R
 clear; echo -e "Installing FTP \n"
 sudo apt install vsftpd
+clear; echo "Looks like we are done! :-)"
 service --status-all
-
-
