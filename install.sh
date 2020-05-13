@@ -22,8 +22,6 @@ clear; echo -e "Testing apache. 'It works' should appeare \n";
 sudo chmod 777 /var/www/html -R; rm /var/www/html/index.html; cp templates/test.php /var/www/html/index.php; sudo service apache2 start; sudo service mysql start; curl localhost; sleep 2
 clear; echo -e "Setting apache default settings"
 sudo cp templates/000-default.conf /etc/apache2/sites-available/000-default.conf
-sudo service apache2 restart
-sudo service mysql restart
 clear; echo -e "Installing git \n"
 sudo apt install git
 clear; echo -e "Installing network-manager \n"
@@ -38,13 +36,11 @@ clear; echo -e "Installing htop \n"
 sudo apt install htop
 clear; echo -e "Installing nmap \n"
 sudo apt install nmap
-clear; echo -e "Downloading and installing hackberry webadmin"
-rm /var/www/html/index.php
-mkdir $PWD/tmp; cd $PWD/tmp; git clone https://github.com/hackberrypi-webgui/public.git; cd public;
-cp * /var/www/html/ -R; cp .git /var/www/html/; mkdir /var/www/html/log; mkdir /var/www/html/temp; chmod 777 /var/www/html/log /var/www/html/temp -R
-cd $PWD/tmp
-sudo rm public -R
 clear; echo -e "Installing FTP \n"
 sudo apt install vsftpd
-clear; echo "Looks like we are done! :-)"
-service --status-all
+
+clear; echo -e "Downloading and installing hackberry webadmin"
+cd /var/www; git clone https://github.com/hackberrypi-webgui/public.git;
+mkdir /var/www/public/log; mkdir /var/www/public/temp; chmod 777 /var/www/public/log /var/www/public/temp -R
+sudo service apache2 restart
+sudo service mysql restart
