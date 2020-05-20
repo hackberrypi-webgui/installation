@@ -36,5 +36,12 @@ clear; echo -e "Installing nmap \n"
 sudo apt install nmap
 clear; echo -e "Installing FTP \n"
 sudo apt install vsftpd
+clear; echo -e "Disabling dhcpd"
+sudo systemctl disable dhcpcd
+sudo systemctl stop dhcpcd
+sudo apt purge openresolv dhcpcd5
+
 #running script for hackberry cloning
 source hackberry.sh
+
+sudo reboot now
