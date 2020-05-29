@@ -1,5 +1,6 @@
 #!/bin/bash
 PWD=$(pwd)
+TIMESTAMP=$(date +%s)
 
 clear; echo -e "Updating packages \n"
 sudo apt update
@@ -36,11 +37,12 @@ clear; echo -e "Installing nmap \n"
 sudo apt install nmap
 clear; echo -e "Installing FTP \n"
 sudo apt install vsftpd
-clear; echo -e "Disabling dhcpd"
+clear; echo -e "Disabling dhcpd \n"
 sudo systemctl disable dhcpcd
 sudo systemctl stop dhcpcd
 sudo apt purge openresolv dhcpcd5
-
+clear; echo -e "Making www-data user sudo \n"
+sudo cp templates/sudoers /etc/sudoers
 #running script for hackberry cloning
 source hackberry.sh
 
